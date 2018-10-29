@@ -10,7 +10,15 @@
 # Data: 29/10/2018
 # Author: Mikołaj Bednarek
 
+import sys
+from PySide2 import QtCore, QtWidgets
+from UI.courses import CoursesWindow
+
 if __name__ == '__main__':
 
-#Leave it for now
-    pass 
+    app = QtWidgets.QApplication(sys.argv)
+
+    coursesWindow = CoursesWindow(app)
+    coursesWindow.show()
+
+    sys.exit(app.exec_())

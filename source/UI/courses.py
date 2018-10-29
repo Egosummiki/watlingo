@@ -1,7 +1,7 @@
 # UI Package
 # Courses view widget class
 
-# Data: 29/10/2018
+# Date: 29/10/2018
 # Author: Mikołaj Bednarek
 
 import sys

@@ -7,7 +7,7 @@
 # Main program file.
 # Initialisation of the whole program.
 
-# Data: 29/10/2018
+# Date: 29/10/2018
 # Author: Mikołaj Bednarek
 
 import sys

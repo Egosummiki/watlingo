@@ -1,4 +1,4 @@
-Funkcjonalność
+# Funkcjonalność
 
 1.  Nauka słówek (pierwszy raz ) z wykorzystaniem obrazków. ? 40
 
@@ -29,5 +29,3 @@ Funkcjonalność
 13. Wybór opcji nie pasującej do pozostałych / wybór pasujących opcji
 
 14. Podział na kategorie
-
-15. 

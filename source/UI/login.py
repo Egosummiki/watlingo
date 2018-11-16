@@ -1,13 +1,15 @@
 # UI Package
-# Courses view widget class
+# Login dialog
 
-# Date: 29/10/2018
+# Date: 16/11/2018
 # Author: Mikołaj Bednarek
 
 import sys
+import os
 from PySide2 import QtCore, QtWidgets, QtGui
+from pathlib import Path
 
-class CoursesWindow(QtWidgets.QWidget):
+class LoginWindow(QtWidgets.QWidget):
 
     def __init__(self, app):
 
@@ -27,26 +29,32 @@ class CoursesWindow(QtWidgets.QWidget):
 
         self.setFixedSize(self.width, self.height)
 
-        self.setTitle("Wybierz Kurs")
+        self.setWindowTitle("Wybierz Użytkownika")
 
         # Init main layout
         self.mainLayout = QtWidgets.QHBoxLayout()
 
         # Add coures view
-        self.coursesView = QtWidgets.QListWidget()
-        self.coursesView.setStyleSheet("font-size: 20pt")
-        self.coursesView.addItem("British English")
-        self.coursesView.addItem("Español")
-        self.coursesView.addItem("Português de Portugal")
-        self.coursesView.addItem("Português do Brasil")
-        self.mainLayout.addWidget(self.coursesView)
+        self.usersView = QtWidgets.QListWidget()
+        self.usersView.setStyleSheet("font-size: 20pt")
+
+        dirs = os.listdir(str(Path.home()) + "/.watlingo")
+
+        for dirName in dirs:
+            self.usersView.addItem(dirName)
+
+        self.mainLayout.addWidget(self.usersView)
 
         # Create right layout with buttons
         self.rightLayout = QtWidgets.QVBoxLayout()
 
         self.buttonStart = QtWidgets.QPushButton()
-        self.buttonStart.setText("Rozpocznij")
+        self.buttonStart.setText("Wybierz")
         self.rightLayout.addWidget(self.buttonStart)
+
+        self.buttonCreate = QtWidgets.QPushButton()
+        self.buttonCreate.setText("Stwórz użytkownika")
+        self.rightLayout.addWidget(self.buttonCreate)
 
         self.buttonQuit = QtWidgets.QPushButton()
         self.buttonQuit.setText("Wyjdź")
@@ -62,4 +70,3 @@ class CoursesWindow(QtWidgets.QWidget):
 
     def quitApplication(self):
         sys.exit(0)
-

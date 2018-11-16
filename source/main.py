@@ -13,12 +13,13 @@
 import sys
 from PySide2 import QtCore, QtWidgets
 from UI.courses import CoursesWindow
+from UI.login import LoginWindow
 
 if __name__ == '__main__':
 
     app = QtWidgets.QApplication(sys.argv)
 
-    coursesWindow = CoursesWindow(app)
+    coursesWindow = LoginWindow(app)
     coursesWindow.show()
 
     sys.exit(app.exec_())

@@ -11,15 +11,16 @@
 # Author: Mikołaj Bednarek
 
 import sys
-from PySide2 import QtCore, QtWidgets
-from UI.courses import CoursesWindow
-from UI.login import LoginWindow
+import platform
+from PyQt5.QtWidgets import *
+from UI.login import *
+from loginManager import *
 
 if __name__ == '__main__':
 
-    app = QtWidgets.QApplication(sys.argv)
+    app = QApplication(sys.argv)
 
-    coursesWindow = LoginWindow(app)
-    coursesWindow.show()
+    loginWindow = LoginWindow(app)
+    loginWindow.show()
 
     sys.exit(app.exec_())

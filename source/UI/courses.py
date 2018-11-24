@@ -5,14 +5,16 @@
 # Author: Mikołaj Bednarek
 
 import sys
-from PyQt5 import QtCore, QtWidgets, QtGui
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 
-class CoursesWindow(QtWidgets.QWidget):
+class CoursesWindow(QWidget):
 
     def __init__(self, app):
 
         # Init the super class
-        QtWidgets.QWidget.__init__(self)
+        QWidget.__init__(self)
 
         # Get screen size and window size
         screenGeo = app.desktop().screenGeometry()
@@ -27,13 +29,13 @@ class CoursesWindow(QtWidgets.QWidget):
 
         self.setFixedSize(self.width, self.height)
 
-        self.setTitle("Wybierz Kurs")
+        self.setWindowTitle("Wybierz Kurs")
 
         # Init main layout
-        self.mainLayout = QtWidgets.QHBoxLayout()
+        self.mainLayout = QHBoxLayout()
 
         # Add coures view
-        self.coursesView = QtWidgets.QListWidget()
+        self.coursesView = QListWidget()
         self.coursesView.setStyleSheet("font-size: 20pt")
         self.coursesView.addItem("British English")
         self.coursesView.addItem("Español")
@@ -42,13 +44,13 @@ class CoursesWindow(QtWidgets.QWidget):
         self.mainLayout.addWidget(self.coursesView)
 
         # Create right layout with buttons
-        self.rightLayout = QtWidgets.QVBoxLayout()
+        self.rightLayout = QVBoxLayout()
 
-        self.buttonStart = QtWidgets.QPushButton()
+        self.buttonStart = QPushButton()
         self.buttonStart.setText("Rozpocznij")
         self.rightLayout.addWidget(self.buttonStart)
 
-        self.buttonQuit = QtWidgets.QPushButton()
+        self.buttonQuit = QPushButton()
         self.buttonQuit.setText("Wyjdź")
         self.buttonQuit.released.connect(self.quitApplication)
         self.rightLayout.addWidget(self.buttonQuit)
@@ -56,7 +58,7 @@ class CoursesWindow(QtWidgets.QWidget):
 
         # Add layout and set aligment to top
         self.mainLayout.addLayout(self.rightLayout)
-        self.mainLayout.setAlignment(self.rightLayout, QtCore.Qt.AlignTop)
+        self.mainLayout.setAlignment(self.rightLayout, Qt.AlignTop)
 
         self.setLayout(self.mainLayout)
 

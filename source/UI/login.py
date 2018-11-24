@@ -11,18 +11,25 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from pathlib import Path
 from loginManager import *
+from UI.courses import CoursesWindow
+
+coursesWindow = {}
 
 class CreateUserWindow(QDialog):
 
     def handle(self):
-        if not self.textField.text():
-            QMessageBox.warning(self, "Puste Pole", "Pole \"Nazwa użytkownika\" nie może być puste.")
+        if self.textField.text():
+            loginManager.addUser(self.textField.text())
+            self.loginWindow.reloadUsers()
+            self.close()
         else:
-            pass
+            QMessageBox.warning(self, "Puste Pole", "Pole \"Nazwa użytkownika\" nie może być puste.")
 
     def __init__(self, parent):
 
         QDialog.__init__(self, parent)
+
+        self.loginWindow = parent
 
         self.setWindowTitle("Dodaj użytkownika")
 
@@ -52,10 +59,19 @@ class CreateUserWindow(QDialog):
 
 class LoginWindow(QWidget):
 
+    def reloadUsers(self):
+        while self.usersView.count() > 0:
+            self.usersView.takeItem(0)
+
+        for user in LoginManager.users:
+            self.usersView.addItem(user['name'])
+
     def __init__(self, app):
 
         # Init the super class
         QWidget.__init__(self)
+
+        self.application = app
 
         # Get screen size and window size
         screenGeo = app.desktop().screenGeometry()
@@ -79,7 +95,7 @@ class LoginWindow(QWidget):
         self.usersView = QListWidget()
         self.usersView.setStyleSheet("font-size: 20pt")
 
-        self.usersView.addItems(loginManager.users)
+        self.reloadUsers()
 
         self.mainLayout.addWidget(self.usersView)
 
@@ -88,6 +104,7 @@ class LoginWindow(QWidget):
 
         self.buttonStart = QPushButton()
         self.buttonStart.setText("Wybierz")
+        self.buttonStart.released.connect(self.selectUser)
         self.rightLayout.addWidget(self.buttonStart)
 
         self.buttonCreate = QPushButton()
@@ -108,8 +125,16 @@ class LoginWindow(QWidget):
         self.setLayout(self.mainLayout)
 
     def displayAddUserWindow(self):
-        addUser = CreateUserWindow(self)
+        addUser = CreateUserWindow()
         addUser.show()
+
+    def selectUser(self):
+        global coursesWindow
+        coursesWindow = CoursesWindow(self.application)
+        self.close()
+        coursesWindow.show()
+        # QMessageBox.about(self, "Użytkownik", "Wybrałeś użytkownika: {}".format(self.usersView.currentItem().text()))
+
 
     def quitApplication(self):
         sys.exit(0)

@@ -1,4 +1,4 @@
-# UI Package
+# Interface Package
 # Courses view widget class
 
 # Date: 29/10/2018

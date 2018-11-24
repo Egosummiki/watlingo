@@ -1,3 +1,3 @@
 
-run: source/main.py
-	python source/main.py
+run: source/Main.py
+	python source/Main.py

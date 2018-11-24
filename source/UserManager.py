@@ -7,39 +7,31 @@
 import os
 import json
 from pathlib import Path
+from Manager import AbstractManager
 
-class LoginManager:
-
-    users = []
-    homeDir = "~"
+class UserManager(AbstractManager):
 
     def addUser(self, username):
         newUser = {'name': username, 'points': 0}
-        file = open("{}/users/{}.json".format(LoginManager.homeDir, username), "w") 
+        file = open("{}/users/{}.json".format(self.homeDir, username), "w") 
         file.write(json.JSONEncoder().encode(newUser))
         file.close()
-        LoginManager.users.append(newUser)
-
+        self.users.append(newUser)
 
     def removeUser(self, username):
         pass
-
     
     def __init__(self):
-        LoginManager.homeDir = str(Path.home()) + "/.watlingo"
+        self.homeDir = str(Path.home()) + "/.watlingo"
+        self.users = []
 
         if os.path.isdir(self.homeDir):
 
             files = os.listdir(str(Path.home()) + "/.watlingo/users")
-            LoginManager.users = []
 
             for fileName in files:
-                file = open("{}/users/{}".format(LoginManager.homeDir, fileName), "r")
-                LoginManager.users.append(json.loads(file.read()))
+                file = open("{}/users/{}".format(self.homeDir, fileName), "r")
+                self.users.append(json.loads(file.read()))
         else:
             os.mkdir(self.homeDir)
             os.mkdir(self.homeDir + "/users")
-            LoginManager.users = []
-
-global loginManager
-loginManager = LoginManager()

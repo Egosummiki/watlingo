@@ -1,4 +1,4 @@
-# UI Package
+# Interface Package
 # Login dialog
 
 # Date: 16/11/2018
@@ -10,12 +10,12 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from pathlib import Path
-from loginManager import *
-from UI.courses import CoursesWindow
+from UserManager import UserManager
+from Interface.Courses import CoursesWindow
 
 coursesWindow = {}
 
-class CreateUserWindow(QDialog):
+class DialogCreateUser(QDialog):
 
     def handle(self):
         if self.textField.text():
@@ -63,7 +63,7 @@ class LoginWindow(QWidget):
         while self.usersView.count() > 0:
             self.usersView.takeItem(0)
 
-        for user in LoginManager.users:
+        for user in UserManager().users:
             self.usersView.addItem(user['name'])
 
     def __init__(self, app):
@@ -125,7 +125,7 @@ class LoginWindow(QWidget):
         self.setLayout(self.mainLayout)
 
     def displayAddUserWindow(self):
-        addUser = CreateUserWindow()
+        addUser = DialogCreateUser()
         addUser.show()
 
     def selectUser(self):

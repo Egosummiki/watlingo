@@ -13,10 +13,7 @@
 import sys
 import platform
 from PyQt5.QtWidgets import *
-from UI.login import *
-from loginManager import *
-from UI.lessons import LessonsWindow
-from UI.courses import CoursesWindow
+from Interface.Login import LoginWindow
 
 if __name__ == '__main__':
 

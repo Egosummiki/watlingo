@@ -8,11 +8,16 @@ import os
 import json
 from pathlib import Path
 from Manager import AbstractManager
+from passlib.hash import pbkdf2_sha256
 
 class UserManager(AbstractManager):
 
-    def addUser(self, username):
-        newUser = {'name': username, 'points': 0}
+    def verifyPassword(self, userid, password):
+        return pbkdf2_sha256.verify(password, self.users[userid]['hash'])
+
+    def addUser(self, username, password):
+        hashed = pbkdf2_sha256.hash(password)
+        newUser = {'name': username, 'points': 0, 'hash': hashed}
         file = open("{}/users/{}.json".format(self.homeDir, username), "w") 
         file.write(json.JSONEncoder().encode(newUser))
         file.close()

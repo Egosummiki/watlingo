@@ -15,11 +15,56 @@ from Interface.Courses import CoursesWindow
 
 coursesWindow = {}
 
+class DialogEnterPassword(QDialog):
+
+    def __init__(self, parent, userid):
+
+        QDialog.__init__(self, parent)
+        self.loginWindow = parent
+        self.setWindowTitle("Podaj hasło")
+        self.userid = userid
+
+        self.layout = QVBoxLayout()
+
+        self.label = QLabel()
+        self.field = QLineEdit()
+        self.field.setEchoMode(QLineEdit.Password)
+
+        self.label.setText("Hasło użytkownika {}".format(UserManager().users[userid]['name']))
+
+        self.layoutButtons = QHBoxLayout()
+        self.buttonCancel = QPushButton()
+        self.buttonCancel.setText("Anuluj")
+        self.buttonCancel.released.connect(self.close)
+        self.buttonAdd = QPushButton()
+        self.buttonAdd.setText("Potwierdź")
+        self.buttonAdd.released.connect(self.attempt)
+
+        self.layoutButtons.addWidget(self.buttonCancel)
+        self.layoutButtons.addWidget(self.buttonAdd)
+
+        self.layout.addWidget(self.label)
+        self.layout.addWidget(self.field)
+        self.layout.addLayout(self.layoutButtons)
+
+        self.setLayout(self.layout)
+
+    def attempt(self):
+        if UserManager().verifyPassword(self.userid, self.field.text()):
+            global coursesWindow
+            coursesWindow = CoursesWindow(self.loginWindow.application)
+            self.close()
+            self.loginWindow.close()
+            coursesWindow.show()
+        else:
+            QMessageBox.warning(self, "Hasło", "Wprowadzone złe hasło")
+
+
 class DialogCreateUser(QDialog):
 
     def handle(self):
-        if self.textField.text():
-            loginManager.addUser(self.textField.text())
+        if self.field.text() and self.fieldPass.text():
+            UserManager().addUser(self.field.text(), self.fieldPass.text())
             self.loginWindow.reloadUsers()
             self.close()
         else:
@@ -34,13 +79,17 @@ class DialogCreateUser(QDialog):
         self.setWindowTitle("Dodaj użytkownika")
 
         self.layout = QVBoxLayout()
-        self.layoutButtons = QHBoxLayout()
 
         self.label = QLabel()
         self.label.setText("Nazwa użytkownika")
+        self.labelPass = QLabel()
+        self.labelPass.setText("Hasło")
 
-        self.textField = QLineEdit()
+        self.field = QLineEdit()
+        self.fieldPass = QLineEdit()
+        self.fieldPass.setEchoMode(QLineEdit.Password)
 
+        self.layoutButtons = QHBoxLayout()
         self.buttonCancel = QPushButton()
         self.buttonCancel.setText("Anuluj")
         self.buttonCancel.released.connect(self.close)
@@ -52,7 +101,9 @@ class DialogCreateUser(QDialog):
         self.layoutButtons.addWidget(self.buttonAdd)
 
         self.layout.addWidget(self.label)
-        self.layout.addWidget(self.textField)
+        self.layout.addWidget(self.field)
+        self.layout.addWidget(self.labelPass)
+        self.layout.addWidget(self.fieldPass)
         self.layout.addLayout(self.layoutButtons)
 
         self.setLayout(self.layout)
@@ -117,7 +168,6 @@ class LoginWindow(QWidget):
         self.buttonQuit.released.connect(self.quitApplication)
         self.rightLayout.addWidget(self.buttonQuit)
 
-
         # Add layout and set aligment to top
         self.mainLayout.addLayout(self.rightLayout)
         self.mainLayout.setAlignment(self.rightLayout, Qt.AlignTop)
@@ -125,16 +175,12 @@ class LoginWindow(QWidget):
         self.setLayout(self.mainLayout)
 
     def displayAddUserWindow(self):
-        addUser = DialogCreateUser()
+        addUser = DialogCreateUser(self)
         addUser.show()
 
     def selectUser(self):
-        global coursesWindow
-        coursesWindow = CoursesWindow(self.application)
-        self.close()
-        coursesWindow.show()
-        # QMessageBox.about(self, "Użytkownik", "Wybrałeś użytkownika: {}".format(self.usersView.currentItem().text()))
-
+        enterPass = DialogEnterPassword(self, self.usersView.currentRow())
+        enterPass.show()
 
     def quitApplication(self):
         sys.exit(0)

@@ -1,0 +1,6 @@
+{
+    'name': 'Kurs języka Angielskiego',
+    'lessons': [
+        'colors.json'
+    ]
+}

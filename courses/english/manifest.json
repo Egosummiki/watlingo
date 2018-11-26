@@ -1,6 +1,6 @@
 {
-    'name': 'Kurs języka Angielskiego',
-    'lessons': [
-        'colors.json'
+    "name": "Kurs języka Angielskiego",
+    "lessons": [
+        "colors.json"
     ]
 }

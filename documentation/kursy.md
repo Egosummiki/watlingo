@@ -9,22 +9,22 @@ zawierający poszczególne lekcje.
 ## Przykładowy układ katalogów
 
 
-+  courses
-    -  english
-        - ﬥ manifest.json
-        -  lessons
-            - ﬥ colors.json
-            - ﬥ animals.json
-            - ﬥ present_perfect.json
++ 📂 courses
+    - 📂 english
+        - 🗎 manifest.json
+        - 📂 lessons
+            - 🗎 colors.json
+            - 🗎 animals.json
+            - 🗎 present_perfect.json
 
             ... etc.
-    -  spanish
+    - 📂 spanish
 
         ...
-    -  portuguese
+    - 📂 portuguese
     
         ...
-    -  french
+    - 📂 french
 
         ...
 
@@ -34,3 +34,15 @@ Plik musi zawierać kolejne klucze:
 
 + "name" - Zawiera wyświetlaną nazwę kursu.
 + "lessons" - Tablica nazw plików kolejnych lekcji.
+
+# Pliki lekcji
+
+Plik lekcji musi zawierać następujące klucze:
+
++ "name" - Nazwa lekcji czego dotyczy konkretna lekcja.
++ "description" - Krótki opis konkretnej lekcji.
++ "tasks" - Tablica zadań konkretnej lekcji. 
+    Obiekt zadania zależy od typu zadania.
+    Dokładny opis każdego typu zadań
+    kluczy instancji zadania znajduje się
+    w pliku tasks.md

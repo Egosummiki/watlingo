@@ -15,11 +15,16 @@ from Interface.Courses import CoursesWindow
 
 coursesWindow = {}
 
+# Dialog which asks the user to input the password
 class DialogEnterPassword(QDialog):
 
     def __init__(self, parent, userid):
 
         QDialog.__init__(self, parent)
+
+        # Dialog has a label a text field
+        # a button to cancel and a button to confirm the input
+
         self.loginWindow = parent
         self.setWindowTitle("Podaj hasło")
         self.userid = userid
@@ -28,7 +33,7 @@ class DialogEnterPassword(QDialog):
 
         self.label = QLabel()
         self.field = QLineEdit()
-        self.field.setEchoMode(QLineEdit.Password)
+        self.field.setEchoMode(QLineEdit.Password) # Hide the letters
 
         self.label.setText("Hasło użytkownika {}".format(UserManager().users[userid]['name']))
 
@@ -59,25 +64,31 @@ class DialogEnterPassword(QDialog):
         else:
             QMessageBox.warning(self, "Hasło", "Wprowadzone złe hasło")
 
-
+# Dialog that allows user creation
 class DialogCreateUser(QDialog):
 
     def handle(self):
         if self.field.text() and self.fieldPass.text():
+            # Field are not empty call the user manager and reload the view
             UserManager().addUser(self.field.text(), self.fieldPass.text())
             self.loginWindow.reloadUsers()
             self.close()
         else:
-            QMessageBox.warning(self, "Puste Pole", "Pole \"Nazwa użytkownika\" nie może być puste.")
+            # Prompt the user that the one of the fields is empty
+            QMessageBox.warning(self, "Puste Pole", "Pola nie mogą być puste.")
 
     def __init__(self, parent):
 
         QDialog.__init__(self, parent)
 
+        # The dialog has 2 text fields 
+        # one for the username other for the password
+        # along which corresponding labels.
+        # The dialog also has 2 buttons
+        # For cancelation and confirmation
+
         self.loginWindow = parent
-
         self.setWindowTitle("Dodaj użytkownika")
-
         self.layout = QVBoxLayout()
 
         self.label = QLabel()
@@ -108,12 +119,16 @@ class DialogCreateUser(QDialog):
 
         self.setLayout(self.layout)
 
+# The main login window class
 class LoginWindow(QWidget):
 
+    # Reload the view
     def reloadUsers(self):
+        # Remove everything from the list
         while self.usersView.count() > 0:
             self.usersView.takeItem(0)
 
+        # For each user add their name to the view
         for user in UserManager().users:
             self.usersView.addItem(user['name'])
 

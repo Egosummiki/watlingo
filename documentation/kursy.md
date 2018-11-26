@@ -8,17 +8,29 @@ zawierający poszczególne lekcje.
 
 ## Przykładowy układ katalogów
 
-+ courses
-    - english
-        - manifest.json
-        - lessons
-            - colors.json
-            - animals.json
-            - present_perfect.json
+
++  courses
+    -  english
+        - ﬥ manifest.json
+        -  lessons
+            - ﬥ colors.json
+            - ﬥ animals.json
+            - ﬥ present_perfect.json
+
             ... etc.
-    - spanish
+    -  spanish
+
         ...
-    - portuguese
+    -  portuguese
+    
         ...
-    - french
+    -  french
+
         ...
+
+# Plik manifest.json
+
+Plik musi zawierać kolejne klucze: 
+
++ "name" - Zawiera wyświetlaną nazwę kursu.
++ "lessons" - Tablica nazw plików kolejnych lekcji.

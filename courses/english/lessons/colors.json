@@ -1,0 +1,18 @@
+{
+    'name': 'Colors',
+    'description': 'Na tej lekcji nauczysz się słownictwa związanego z kolorami.',
+    'tasks': [
+        [
+        {
+            'type': 'PIC-SELECT',
+            'question': 'Wybierz słowo oznaczające "Zielony".',
+            'options': [
+                {'text': 'red', 'res': 'colors/red.png'},
+                {'text': 'green', 'res': 'colors/green.png'},
+                {'text': 'blue', 'res': 'colors/blue.png'},
+                {'text': 'pink', 'res': 'colors/pink.png'}
+            ]
+        }
+        ]
+    ]
+}

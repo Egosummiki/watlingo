@@ -14,10 +14,13 @@ import sys
 import platform
 from PyQt5.QtWidgets import *
 from Interface.Login import LoginWindow
+from CourseManager import CourseManager
 
 if __name__ == '__main__':
 
     app = QApplication(sys.argv)
+
+    courseMan = CourseManager()
 
     loginWindow = LoginWindow(app)
     loginWindow.show()

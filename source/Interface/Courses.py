@@ -8,6 +8,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+from CourseManager import CourseManager
 
 class CoursesWindow(QWidget):
 
@@ -37,10 +38,10 @@ class CoursesWindow(QWidget):
         # Add coures view
         self.coursesView = QListWidget()
         self.coursesView.setStyleSheet("font-size: 20pt")
-        self.coursesView.addItem("British English")
-        self.coursesView.addItem("Español")
-        self.coursesView.addItem("Português de Portugal")
-        self.coursesView.addItem("Português do Brasil")
+        for course in CourseManager().courses:
+            self.coursesView.addItem(course['name'])
+
+
         self.mainLayout.addWidget(self.coursesView)
 
         # Create right layout with buttons

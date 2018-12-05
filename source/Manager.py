@@ -8,8 +8,8 @@
 # Author: Mikołaj Bednarek
 
 class AbstractManager:
+    _instance = None
     def __new__(cls, *args, **kw):
-        if not hasattr(cls, '_instance'):
-            orig = super(AbstractManager, cls)
-            cls._instance = orig.__new__(cls, *args, **kw)
+        if not isinstance(cls._instance, cls):
+            cls._instance = object.__new__(cls, *args, **kw)
         return cls._instance

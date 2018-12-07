@@ -7,7 +7,7 @@ class LessonsWindow(QWidget):
     def metoda():
         pass
 
-    def __init__(self):
+    def __init__(self, course):
 
         QWidget.__init__(self)
 

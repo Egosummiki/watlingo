@@ -129,7 +129,7 @@ class LoginWindow(QWidget):
             self.usersView.takeItem(0)
 
         # For each user add their name to the view
-        for user in UserManager().users:
+        for user in UserManager():
             self.usersView.addItem(user['name'])
 
     def __init__(self, app):

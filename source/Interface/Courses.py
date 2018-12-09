@@ -38,9 +38,8 @@ class CoursesWindow(QWidget):
         # Add coures view
         self.coursesView = QListWidget()
         self.coursesView.setStyleSheet("font-size: 20pt")
-        for course in CourseManager().courses:
+        for course in CourseManager():
             self.coursesView.addItem(course['name'])
-
 
         self.mainLayout.addWidget(self.coursesView)
 

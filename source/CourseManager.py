@@ -16,3 +16,9 @@ class CourseManager(AbstractManager):
                 self.courses.append(json.loads(file.read()))
         print("Hello!")
 
+    def __iter__(self):
+        return iter(self.courses)
+
+    def __next__(self):
+        return next(self.courses)
+

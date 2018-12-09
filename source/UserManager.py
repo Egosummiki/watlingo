@@ -40,3 +40,9 @@ class UserManager(AbstractManager):
         else:
             os.mkdir(self.homeDir)
             os.mkdir(self.homeDir + "/users")
+
+    def __iter__(self):
+        return iter(self.users)
+
+    def __next__(self):
+        return next(self.users)

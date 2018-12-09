@@ -35,8 +35,8 @@ class UserManager(AbstractManager):
             files = os.listdir(str(Path.home()) + "/.watlingo/users")
 
             for fileName in files:
-                file = open("{}/users/{}".format(self.homeDir, fileName), "r")
-                self.users.append(json.loads(file.read()))
+                with open("{}/users/{}".format(self.homeDir, fileName), "r") as file:
+                    self.users.append(json.loads(file.read()))
         else:
             os.mkdir(self.homeDir)
             os.mkdir(self.homeDir + "/users")

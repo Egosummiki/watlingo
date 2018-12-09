@@ -9,6 +9,10 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from CourseManager import CourseManager
+from LessonManager import LessonManager
+from Interface.Lessons import LessonsWindow
+
+lessonWindow = {}
 
 class CoursesWindow(QWidget):
 
@@ -48,6 +52,7 @@ class CoursesWindow(QWidget):
 
         self.buttonStart = QPushButton()
         self.buttonStart.setText("Rozpocznij")
+        self.buttonStart.released.connect(self.selectCourse)
         self.rightLayout.addWidget(self.buttonStart)
 
         self.buttonQuit = QPushButton()
@@ -61,6 +66,14 @@ class CoursesWindow(QWidget):
         self.mainLayout.setAlignment(self.rightLayout, Qt.AlignTop)
 
         self.setLayout(self.mainLayout)
+
+    def selectCourse(self):
+        global lessonWindow
+        lessonWindow = LessonsWindow(
+                CourseManager().getLessonManager(self.coursesView.currentRow()))
+
+        lessonWindow.show()
+        self.close()
 
     def quitApplication(self):
         sys.exit(0)

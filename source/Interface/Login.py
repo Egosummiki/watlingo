@@ -40,9 +40,11 @@ class DialogEnterPassword(QDialog):
         self.layoutButtons = QHBoxLayout()
         self.buttonCancel = QPushButton()
         self.buttonCancel.setText("Anuluj")
+        self.buttonCancel.setDefault(False)
         self.buttonCancel.released.connect(self.close)
         self.buttonAdd = QPushButton()
         self.buttonAdd.setText("Potwierdź")
+        self.buttonAdd.setDefault(True)
         self.buttonAdd.released.connect(self.attempt)
 
         self.layoutButtons.addWidget(self.buttonCancel)
@@ -103,9 +105,11 @@ class DialogCreateUser(QDialog):
         self.layoutButtons = QHBoxLayout()
         self.buttonCancel = QPushButton()
         self.buttonCancel.setText("Anuluj")
+        self.buttonCancel.setDefault(False)
         self.buttonCancel.released.connect(self.close)
         self.buttonAdd = QPushButton()
         self.buttonAdd.setText("Dodaj")
+        self.buttonAdd.setDefault(True)
         self.buttonAdd.released.connect(self.handle)
 
         self.layoutButtons.addWidget(self.buttonCancel)

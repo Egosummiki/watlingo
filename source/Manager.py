@@ -10,6 +10,10 @@
 class AbstractManager:
     _instance = None
     def __new__(cls, *args, **kw):
+        print("New instance")
         if not isinstance(cls._instance, cls):
+            print("New object")
             cls._instance = object.__new__(cls, *args, **kw)
+        else:
+            print("Old object")
         return cls._instance

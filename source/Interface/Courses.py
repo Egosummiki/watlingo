@@ -60,7 +60,6 @@ class CoursesWindow(QWidget):
         self.buttonQuit.released.connect(self.quitApplication)
         self.rightLayout.addWidget(self.buttonQuit)
 
-
         # Add layout and set aligment to top
         self.mainLayout.addLayout(self.rightLayout)
         self.mainLayout.setAlignment(self.rightLayout, Qt.AlignTop)

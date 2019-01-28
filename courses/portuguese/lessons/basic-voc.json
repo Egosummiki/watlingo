@@ -1,0 +1,54 @@
+{
+    "name": "Vocabulário básico",
+    "description": "Na tej lekcji nauczysz się prostego słownictwa.",
+    "tasks": [
+        {
+            "type": "PIC-SELECT",
+            "question": "Wybierz słowo oznaczające \"Chłopiec\".",
+            "options": [
+                {"text": "a mulher", "res": "woman.png"},
+                {"text": "o menino", "res": "boy.png"},
+                {"text": "o homem", "res": "man.png"}
+            ],
+            "answer": 1
+        },
+        {
+            "type": "PIC-SELECT",
+            "question": "Wybierz słowo oznaczające \"Kot\".",
+            "options": [
+                {"text": "o menino", "res": "boy.png"},
+                {"text": "o cachoro", "res": "dog.png"},
+                {"text": "o gato", "res": "cat.png"}
+            ],
+            "answer": 1
+        },
+        {
+            "type": "TRANSLATE",
+            "question": "Wiedząc, że uwielbia to \"adora\". Przetłumacz \"Chłopiec uwielbia kota.\"",
+            "answers": [
+                "menino adora gato",
+                "menino adora o gato",
+                "menino gosta do gato",
+                "menino gosta de gato",
+                "rapaz adora gato",
+                "rapaz adora o gato",
+                "rapaz gosta do gato",
+                "rapaz gosta de gato",
+                "rapazinho adora gato",
+                "rapazinho adora o gato",
+                "rapazinho gosta do gato",
+                "rapazinho gosta de gato"
+            ]
+        },
+        {
+            "type": "PIC-SELECT",
+            "question": "Wybierz słowo oznaczające \"Kot\".",
+            "options": [
+                {"text": "o menino", "res": "boy.png"},
+                {"text": "o cachoro", "res": "dog.png"},
+                {"text": "o gato", "res": "cat.png"}
+            ],
+            "answer": 1
+        },
+    ]
+}

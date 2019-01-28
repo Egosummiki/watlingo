@@ -1,5 +1,6 @@
 {
     "name": "Kurs języka Angielskiego",
+    "plain": "english",
     "lessons": [
         "colors.json"
     ]

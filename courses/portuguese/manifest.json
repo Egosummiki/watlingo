@@ -1,6 +1,8 @@
 {
     "name": "Kurs języka Portugalskiego",
+    "plain": "portuguese",
     "lessons": [
-        "colors.json"
+        "basic-voc.json",
+        "conj.json"
     ]
 }

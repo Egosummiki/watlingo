@@ -1,0 +1,40 @@
+{
+    "name": "Conjugo básico",
+    "description": "Na tej lekcji nauczysz się odmiany czasownikow w czasie terazniejszym.",
+    "tasks": [
+        {
+            "type": "SELECT",
+            "question": "Wybierz słowo oznaczające \"Potrzebuję\".",
+            "options": [
+                {"text": "precisas"},
+                {"text": "preciso"},
+                {"text": "precisa"},
+                {"text": "precisam"},
+                {"text": "precisei"}
+            ],
+            "answer": 1
+        },
+        {
+            "type": "SELECT",
+            "question": "Wybierz słowo oznaczające \"On nie widzi\".",
+            "options": [
+                {"text": "ele não vê"},
+                {"text": "eles vi"},
+                {"text": "ela vê também"},
+                {"text": "não vejo"},
+                {"text": "te vê"}
+            ],
+            "answer": 0
+        },
+        {
+            "type": "TRANSLATE",
+            "question": "Przetłumacz 'potrzebuję cię'?",
+            "answers": [
+                "preciso de você",
+                "preciso de ti",
+                "eu preciso de você",
+                "eu preciso de ti"
+            ]
+        }
+    ]
+}

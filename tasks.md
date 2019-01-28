@@ -1,4 +1,4 @@
-# Tasks to fulfil the project
+# Tasks to fulfill the project
 
 ## Aplikacja
 

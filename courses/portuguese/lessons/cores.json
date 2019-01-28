@@ -2,7 +2,6 @@
     "name": "Cores",
     "description": "Na tej lekcji nauczysz się słownictwa związanego z kolorami.",
     "tasks": [
-        [
         {
             "type": "PIC-SELECT",
             "question": "Wybierz słowo oznaczające \"Zielony\".",
@@ -12,7 +11,39 @@
                 {"text": "azul", "res": "colors/blue.png"},
                 {"text": "amarelho", "res": "colors/yellow.png"}
             ]
+        },
+        {
+            "type": "SELECT",
+            "question": "Jak powiedzieć dupa?",
+            "options": [
+                {"text": "cu"},
+                {"text": "bunda"},
+                {"text": "bumbum"}
+            ]
+        },
+        {
+            "type": "ARRANGE",
+            "question": "Jak powiesz 'potrzebuję cię'?",
+            "elements": [
+                {"text": "eu"},
+                {"text": "preciso"},
+                {"text": "precisas"},
+                {"text": "precisam"},
+                {"text": "de"},
+                {"text": "do"},
+                {"text": "da"},
+                {"text": "tu"},
+                {"text": "ti"},
+                {"text": "você"},
+                {"text": "mim"},
+                {"text": "gente"}
+            ],
+            "answers": [
+                ["preciso", "de", "você"],
+                ["preciso", "de", "ti"],
+                ["eu", "preciso", "de", "você"],
+                ["eu", "preciso", "de", "ti"]
+            ]
         }
-        ]
     ]
 }
